@@ -23,3 +23,23 @@ function initIncreaseNumberAnimation() {
 }
 
 initIncreaseNumberAnimation();
+
+document.querySelector('#budget').addEventListener('change', function handleSelectChange(event) {
+    if (event.target.value === 'other') {
+        const formContainer = document.createElement('div');
+        formContainer.classList.add('form__group');
+        formContainer.classList.add('form__other-input'); // Задание 1
+
+        const input = document.createElement('input');
+        input.placeholder = "Введите ваш вариант";
+        input.type = "text"; // Задание 2
+
+        formContainer.appendChild(input);
+        document.querySelector('#form form').insertBefore(formContainer, document.querySelector('.form__submit')); // Задание 3
+    }
+
+    const otherInput = document.querySelector('.form__other-input');
+    if (event.target.value !== 'other' && otherInput) { // Задание 5
+    document.querySelector('#form form').removeChild(otherInput); // Задание 4
+    }
+});
